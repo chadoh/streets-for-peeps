@@ -1,0 +1,39 @@
+.hero {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  gap: var(--spacing-m);
+}
+
+.hero > * {
+  flex: 1;
+}
+
+.contentColumn {
+  padding-left: var(--spacing-m);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.contentContainer {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.contentContainer > *:not(h1, form) {
+  max-width: calc(15 * var(--spacing-m));
+}
+
+.bg {
+  background-image: url('/cityscape.png');
+  background-size: cover;
+  background-position: center left;
+}

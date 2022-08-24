@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Code+Pro&display=swap');
+
+$light: #f0f0f0;
+$white: #fff;
+$dark: #3A3D49;
+$black: #000;
+$red: #fc5b5b;
+
+:root {
+  /* Typographic Scale */
+  --base-font-size: 18px;
+  @media (min-width: 415px) {
+    --base-font-size: 20px;
+  }
+  @media (min-width: 600px) {
+    --base-font-size: 24px;
+  }
+
+  /* Font Family */
+  --sans: Inter, sans-serif;
+  --monospace: "Source Code Pro", monospace;
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  /* Line Heights */
+  --lh-headings: 1;
+  --lh-copy: 1.5;
+
+  /* Spacing Scale */
+  --base-spacing: 0.5rem;
+  --spacing-xs: calc(var(--base-spacing) / 2);
+  --spacing-s: var(--base-spacing);
+  --spacing-m: calc(var(--base-spacing) * 2);
+  --spacing-l: calc(var(--base-spacing) * 3);
+  --spacing-xl: calc(var(--base-spacing) * 4);
+  --spacing-xxl: calc(var(--base-spacing) * 5);
+  --max-width: calc(35 * var(--spacing-m));
+
+  /* Border Radius */
+  --br-base: 10px;
+  --br-small: 4px;
+
+  /* Colors */
+  --light: #{$light};
+  --white: #{$white};
+  --dark: #{$dark};
+  --black: #{$black};
+  --box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  --box-shadow-deep: 0px 4px 20px rgba(0, 0, 0, 0.5);
+
+  --fg: var(--black);
+  --bg: var(--light);
+  --button-fg: var(--light);
+  --button-bg: var(--black);
+
+  --gray-1: #{adjust-color($black, $alpha: -0.9)};
+  --gray-2: #{adjust-color($black, $alpha: -0.8)};
+  --gray-3: #{adjust-color($black, $alpha: -0.7)};
+  --gray-4: #{adjust-color($black, $alpha: -0.6)};
+  --gray-5: #{adjust-color($black, $alpha: -0.5)};
+  --gray-6: #{adjust-color($black, $alpha: -0.4)};
+  --gray-7: #{adjust-color($black, $alpha: -0.3)};
+  --gray-8: #{adjust-color($black, $alpha: -0.2)};
+  --gray-9: #{adjust-color($black, $alpha: -0.1)};
+
+  --red: #{$red};
+  --bg-red: #{adjust-color($red, $alpha: -0.9)};
+  --bg-red-gradient: linear-gradient(to bottom right, rgb(75, 61, 88), rgb(80, 73, 79));
+}
+
+@mixin dark {
+  --bg: var(--black);
+  --fg: var(--light);
+  --button-fg: var(--black);
+  --button-bg: var(--light);
+
+  --gray-1: #{adjust-color($light, $alpha: -0.9)};
+  --gray-2: #{adjust-color($light, $alpha: -0.8)};
+  --gray-3: #{adjust-color($light, $alpha: -0.7)};
+  --gray-4: #{adjust-color($light, $alpha: -0.6)};
+  --gray-5: #{adjust-color($light, $alpha: -0.5)};
+  --gray-6: #{adjust-color($light, $alpha: -0.4)};
+  --gray-7: #{adjust-color($light, $alpha: -0.3)};
+  --gray-8: #{adjust-color($light, $alpha: -0.2)};
+  --gray-9: #{adjust-color($light, $alpha: -0.1)};
+
+  --box-shadow: none;
+  --box-shadow-hover: 0px 0px 100px #{adjust-color($black, $alpha: -0.9)} inset;
+  --box-shadow-deep: 0px 0px 2px var(--gray-5),
+                     0px 4px 20px var(--black);
+
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.dark {
+  @include dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark;
+  }
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Inter, sans-serif;
+  line-height: 1.6;
+  font-size: var(--base-font-size);
+}
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  border-bottom: 1px solid var(--gray-3);
+  border-radius: var(--bg-small);
+  color: var(--fg);
+  text-decoration: none;
+  transition: border-bottom 80ms;
+}
+
+a:focus,
+a:hover {
+  background: radial-gradient(circle at center bottom, #FF30B910, transparent);
+  border-bottom-color: var(--fg);
+  color: var(--secondary);
+}
+
+a:active {
+  color: var(--tertiary);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.1;
+}
+
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 35rem;
+  padding: 0 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+input, button {
+  font-size: inherit;
+}
+
+input[type="email"] {
+  border-radius: var(--br-small);
+  padding: var(--spacing-s);
+  border: 2px solid var(--fg);
+  background-color: transparent;
+  color: var(--fg);;
+}
+
+button {
+  border: none;
+  border-radius: var(--br-small);
+  background-color: var(--fg);
+  color: var(--bg);
+  cursor: pointer;
+  padding: var(--spacing-s);
+}
+
+button:hover,
+button:focus {
+  background: var(--gray-9);
+}
+
+button:active {
+  background: var(--gray-8);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
